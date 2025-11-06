@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Credit Card Fraud Prediction</h2>
+    <form method="POST" action="/predict">
+        <label>Distance from Home:</label><input name="distance_from_home" required>
+        <label>Distance from Last Transaction:</label><input name="distance_from_last_transaction" required>
+        <label>Ratio to Median Price:</label><input name="ratio_to_median_purchase_price" required>
+        <label>Repeat Retailer (0 or 1):</label><input name="repeat_retailer" required>
+        <label>Used Chip (0 or 1):</label><input name="used_chip" required>
+        <label>Used PIN (0 or 1):</label><input name="used_pin_number" required>
+        <label>Online Order (0 or 1):</label><input name="online_order" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</div>
+</body>
+</html>
